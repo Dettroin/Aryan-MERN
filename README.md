@@ -1,2 +1,1 @@
-# Aryan-MERN
-Frontend Development
+# Aryan MERN Project - Day 1
