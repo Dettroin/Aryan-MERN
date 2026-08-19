@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const studentRoutes = require('./routes/studentRoutes');
+const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,21 +21,8 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/students', studentRoutes);
 
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found',
-  });
-});
-
-app.use((error, req, res, next) => {
-  console.error(error);
-
-  res.status(error.statusCode || 500).json({
-    success: false,
-    message: error.message || 'Server error',
-  });
-});
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 async function startServer() {
   try {
