@@ -1,0 +1,101 @@
+{
+  "info": {
+    "name": "Task Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/tasks"
+    },
+    {
+      "key": "taskId",
+      "value": "REPLACE_WITH_TASK_ID"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Build Task API\",\n  \"description\": \"Create CRUD APIs\",\n  \"assignedTo\": \"Aryan\",\n  \"priority\": \"High\",\n  \"status\": \"In Progress\",\n  \"dueDate\": \"2026-08-30\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}",
+          "host": [
+            "{{baseUrl}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}",
+          "host": [
+            "{{baseUrl}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Task By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/{{taskId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{taskId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Completed\",\n  \"priority\": \"Medium\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/{{taskId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{taskId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/{{taskId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{taskId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
